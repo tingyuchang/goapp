@@ -10,6 +10,9 @@ COPY *.go ./
 
 RUN go build -o /goapp
 
-EXPOSE 8080
+ENV PORT=8080
 
-CMD [ "/goapp" ]
+EXPOSE ${PORT}
+
+#CMD [ "/goapp", "-port", "$PORT"]
+CMD ["sh", "-c", "/goapp -port $PORT"]
